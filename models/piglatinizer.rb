@@ -25,7 +25,7 @@ class PigLatinizer
     end
 
      def vowel?(letter)
-      letter.downcase
+      letter.downcase!
       letter == "o" || letter == "e" || letter == "a" || letter == "i" || letter == "u"
     end
 

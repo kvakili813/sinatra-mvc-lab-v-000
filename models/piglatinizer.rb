@@ -9,8 +9,6 @@ class PigLatinizer
         until vowel?(letters[0])
           letters << letters.shift
           letters  << "ay"
-        else
-          letters << "way"
         end
       elsif letters.size == 1
         letters << "way"

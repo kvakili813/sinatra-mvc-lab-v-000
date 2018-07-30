@@ -5,9 +5,9 @@ class PigLatinizer
     binding.pry
     #differentiate between multiple words or one word
     #if one word continue as is
-    #if multiple words 
+    #if multiple words
       #.split(" ")
-      
+
       #return word if %w[and an in].include?(word)
       letters = word.split("")
       letters.keep_if {|letter| letter != "."}

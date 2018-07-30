@@ -13,7 +13,7 @@ class PigLatinizer
           letters << letters.shift
         end
         letters  << "ay"
-    
+
       end
       letters.join
     end

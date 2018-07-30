@@ -5,15 +5,15 @@ class PigLatinizer
       letters = word.split("")
       letters.keep_if {|letter| letter != "."}
       if letters.size > 1
-      
+
         if !vowel?(letters[0])
           letters << letters.shift
+          letters  << "ay"
+        else
+          letters
         end
-
       elsif letters.size == 1
         letters << "way"    
-      end
-        letters  << "ay"
       end
       letters.join
     end

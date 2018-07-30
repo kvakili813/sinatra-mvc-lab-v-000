@@ -1,30 +1,27 @@
 class PigLatinizer
 
-  def piglatinize(string)
-    string = string.split('')
-    if string.first.downcase.match(/[bcdfghjklmnpqrstvwxyz]/) && string[1].downcase.match(/[bcdfghjklmnpqrstvwxyz]/) && string[2].downcase.match(/[bcdfghjklmnpqrstvwxyz]/)
-      first = string.shift
-      second = string.shift
-      third = string.shift
-      "#{string.join}#{first}#{second}#{third}ay"
-    elsif string.first.downcase.match(/[bcdfghjklmnpqrstvwxyz]/) && string[1].downcase.match(/[bcdfghjklmnpqrstvwxyz]/)
-      first = string.shift
-      second = string.shift
-      "#{string.join}#{first}#{second}ay"
-    elsif string.first.downcase.match(/[bcdfghjklmnpqrstvwxyz]/)
-      first = string.shift
-      "#{string.join}#{first}ay"
-    elsif string.first.downcase.match(/[aeoui]/)
-      "#{string.join}way"
-    else
-      string.join
+  def piglatinize(word)
+      #return word if %w[and an in].include?(word)
+      letters = word.split("")
+      letters.keep_if {|letter| letter != "."}
+      if letters.size > 1
+        until vowel?(letters[0])
+          letters << letters.shift
+        end
+        letters  << "ay"
+      end
+      letters.join
     end
-  end
 
-  def to_pig_latin(sentence)
-    phrase = sentence.split(' ')
-    phrase.map {|value| piglatinize(value)}
-    phrase.join(" ")
- end
+     def to_pig_latin(text)
+      words = text.split(" ")
+      words.map! {|word| piglatinize(word)}
+      words.join(" ")
+    end
+
+     def vowel?(letter)
+      letter.downcase
+      letter == "o" || letter == "e" || letter == "a" || letter == "i" || letter == "u"
+    end
 
 end

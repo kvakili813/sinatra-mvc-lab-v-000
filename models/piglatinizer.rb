@@ -4,14 +4,16 @@ class PigLatinizer
       #return word if %w[and an in].include?(word)
       letters = word.split("")
       letters.keep_if {|letter| letter != "."}
-      if letters.size > 1
+
+      if letters.size == 1 || vowel?(letters[0])
+        letters << "way"
+      elsif letters.size > 1
 
         until vowel?(letters[0])
           letters << letters.shift
         end
         letters  << "ay"
-      elsif letters.size == 1 || vowel?(letters[0])
-        letters << "way"
+    
       end
       letters.join
     end
